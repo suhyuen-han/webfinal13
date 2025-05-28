@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Too Much Stuff Museum</title>
+<style>
+      .wrap{max-width: 90vw; margin: auto; position: relative;}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body, html {
+      height: 100%;
+      font-family: 'Arial', sans-serif;
+      overflow-x: hidden;
+    }
+    body {
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+    .overlay {
+      position: relative;
+      width: 100%;
+      padding-top: 80px;
+      color: white;
+    }
+    .overlay::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.3);
+      z-index: -1;
+    }
+ 
+
+.nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: ;
+      display: flex;
+      justify-content: center;
+      gap: 10rem;
+      padding: 1rem 0;
+      z-index: 10;
+    }
+
+    .nav button {
+      background: none;
+      border: none;
+      color: #ccc;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .nav button:hover {
+      color: white;
+    }
+
+    
+.horizontal-wrapper {
+  display: flex;
+  flex-direction: row;
+  overflow-x: hidden;
+  overflow-y: hidden; /* 이 줄 추가 */
+  height: 200vh;       /* 뷰포트 높이에 고정 */
+  position: relative;
+}
+
+
+    .slide {
+      flex: none;
+      width: 100vw;
+      padding: rem;
+      scroll-snap-align: start;
+      color: white;
+
+    }
+
+    #section1 { background:  background: url('background.mp4') no-repeat center center fixed;
+      background-size: cover; height: 300vh; }
+    #section2 { background: #444; height: 350vh; }
+    #section3 { background: #555; height: 200vh; }
+    .slide {
+  flex: none;
+  width: 100vw;
+  height: 100vh;  /* 가로 섹션의 높이 고정 */
+  overflow-y: hidden; /* ✨ 세로 스크롤 막기 */
+  scroll-snap-align: start;
+  position: relative;
+}
+.scroll-area {
+  height: 100%;
+  overflow-y: auto;
+ 
+}
+.bg-video {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+
+    .nav-links a {
+      margin-left: 2rem;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 35vh 6vw 10vh;
+      max-width: 1000px;
+    }
+    .hero h1 {
+      font-size: min(10vw, 7rem);
+      font-weight: 1000;
+      line-height: 1.2;
+      color: white;
+      margin-bottom: 3rem;
+      text-align: left;
+    }
+    p.description {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: white;
+      margin-left: 12vh;
+      margin-bottom: 4vh;
+      max-width: 450px;
+    }
+    .section {
+      max-width: 800px;
+      margin-left: auto;
+      padding: 200px 6vw 80px;
+      color: white;
+    }
+    .section h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8rem;
+    }
+    .section p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    .button {
+      padding: 10px 20px;
+      background-color: white;
+      color: black;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .ranking-title {
+      text-align: center;
+      font-size: min(4vw, 1.5rem);
+      margin-top: 0px;
+      color: white;
+      font-weight: bold;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4rem;
+      padding: 510px 5vw 220px;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    .top{position: absolute;
+  top: 100px;
+  left: 100px;
+  font-size: min(4vw, 1.5rem);
+  font-weight: bold;
+color: white; /* ✨ 글자 색 하얗게 */
+  z-index: 3;   } 
+  .top2{position: absolute;
+  top: 300px;
+  left: 150px;
+  font-size: 0.9rem;
+  font-weight: ;
+  line-height: 1.8;
+color: white; /* ✨ 글자 색 하얗게 */
+  z-index: 3;   }
+
+    .card {
+      background:e;
+      color: white;
+      border-radius: px;
+      width: 400px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+    .card:hover {
+      transform: translateY(-20px);
+    }
+    .ranking-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: white;
+  border-radius: 6px;
+  padding: 4px 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.ranking-badge .ranking-number {
+  color: #5e0b0b; /* 검붉은색 */
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+    .ranking-video-wrapper {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.ranking-bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 65%;
+  object-fit: cover;
+  z-index: 0;
+  ackground: rgba(0, 0, 0, 0.5);
+}
+
+
+.gallery{
+  position: relative;
+  z-index: 2; /* 카드와 텍스트가 위에 보이게 */
+}
+
+    .card img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+    }
+    .card-content {
+      padding-top: 1rem;
+    }
+    .card-content h4 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .card-content p {
+      font-size: 0.9rem;
+      color: white;
+    }
+   .story-list-section {
+  background: white;
+  padding: 50px 10vw 150px;
+  color: #5e0b0b;
+}
+.story-list-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 13rem;
+}
+.story-list {
+  display: flex;
+  gap: 4rem;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.story-list ul {
+  list-style: none;
+  padding-left: 0;
+  width: 100%;
+  max-width: 600px;
+}
+.story-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+.story-title {
+  font-weight: bold;
+  margin-right: 2rem;
+  min-width: 150px;
+}
+.story-desc {
+  color: #555;
+  flex: 1;
+}
+.preview {
+  width: 300px;
+  min-width: 260px;
+}
+.preview-img {
+  display: none;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+.pagination {
+  text-align: center;
+  margin-top: 40px;
+}
+.pagination button {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  margin: 0 6px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #666;
+}
+.pagination button.active {
+  color: black;
+  text-decoration: underline;
+}
+.participate-section {
+  position: relative;
+  width: 100%;
+  height: 150vh;
+  background: url(b.jpg) center center / cover no-repeat;
+  color: white;
+  font-family: 'Arial', sans-serif;
+  overflow: hidden;
+}
+
+/* 좌측 상단 텍스트 */
+.participate-title-top {
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  font-size: min(4vw, 1.5rem);
+  font-weight: bold;
+}
+
+/* 중앙 오른쪽 텍스트 */
+.participate-center {
+  position: absolute;
+  top: 60%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  max-width: 4800px;
+  text-align: center;
+}
+
+.participate-center h1 {
+  font-size: min(10vw, 7rem);
+  font-weight: 1500;
+  margin-bottom: 5rem;
+}
+
+.participate-center .sub {
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.participate-center .desc {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* 좌측 하단 버튼 */
+.participate-left-bottom {
+  position: absolute;
+  bottom: -850px;
+  left: 300px;
+  display: flex;
+  align-items: center;
+}
+
+.participate-left-bottom span {
+  font-weight: bold;
+  font-size: min(4vw, 1.5rem);
+  margin-right: 15px;
+}
+
+.arrow-button {
+  width: 60px;
+  height: 60px;
+  background: black;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.participate-right-bottom {
+  position: absolute;
+  bottom: -800px;
+  right: -1160px;
+}
+
+.participate-right-bottom button {
+  padding: 10px 20px;
+  background: white;
+  color: black;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+/* 어두운 배경용 오버레이 */
+.participate-section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.3); /* 어두운 투명 레이어 */
+  z-index: 0;
+}
+
+/* 모든 자식 요소는 오버레이 위로 올라오게 */
+.participate-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+  
+.next-arrow-button {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  width: 60px;
+  height: 60px;
+  background-color: white;
+  color: black;
+  border-radius: 50%;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  z-index: 99;
+  transition: background 0.3s;
+}
+.next-arrow-button:hover {
+  background-color: #f0f0f0;
+}
+
+
+.card {
+  width: 400px;
+  height: 500px;
+  perspective: 1000px;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-back {
+  background-color: white;
+  color: black;
+  transform: rotateY(180deg);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.vote-button {
+  margin-top: 1rem;
+  padding: 8px 16px;
+  background-color: #5e0b0b;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.vote-count {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.vote-intro {
+  text-align: center;
+  font-size: 1.2rem;
+  color: white;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.vote-instruction {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #ddd;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+}
+.black{color: black}
+
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+}
+
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card-front {
+  z-index: 2;
+}
+
+.card-back {
+  background-color: #fff;
+  color: black;
+  transform: rotateY(180deg);
+  z-index: 1;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-back .card-content h4,
+.card-back .card-content p,
+.card-back .vote-button,
+.card-back .vote-count {
+  color: black !important;
+  z-index: 10;
+}
+
+.card-back .card-content h4,
+.card-back .card-content p,
+.card-back .vote-count {
+  color: black !important;
+  z-index: 10;
+}
+
+.card-back .vote-button {
+  color: white !important;
+  background-color: #5e0b0b !important;
+}
+</style>
+</head>
+<body>
+<div class="nav">
+<button onclick="scrollToSection(0)">Introduce</button>
+<button onclick="scrollToSection(1)">Ranking</button>
+<button onclick="scrollToSection(2)">Participate</button>
+</div>
+<!-- 가로 섹션 -->
+<div class="horizontal-wrapper" id="scrollContainer">
+<section class="slide" id="section1">
+<div class="scroll-area">
+<video autoplay="" loop="" muted="" playsinline="" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1;">
+<source src="background.mp4" type="video/mp4"/>
+</video>
+<header class="hero">
+<h1>TOO MUCH<br/>STUFF<br/>MUSEUM</h1>
+</header>
+<section>
+<p class="description">
+        현대 소비 사회에서 사람들은 따로 이유 없이, 혹은 순간의<br/> 감정에 휘둘려 물건을 구매합니다.
+        ‘왜 샀는지는 모르겠지만’, <br/>‘쓸모없지만 버릴 수 없는 것’, ‘한 번도 쓰지 않았지만 애정이<br/> 가는 것’
+        -이러한 물건들은 단순한 소비의 결과가 아니라<br/> 그 사람의<strong> 감정, 기억, 혹은 욕망</strong>이 스며든 일종의 문화적 산물입니다.
+      </p>
+</section>
+<section class="section">
+<h3>TOO MUCH STUFF MUSEUM이란</h3>
+<p>
+<strong>충동구매 박물관</strong>은 이러한 ‘이상한 소비’의 유물들을 모아 전시함으로써,<br/>
+        단순히 웃고 지나치는 것을 넘어<br/>
+<strong>“우리는 소비로 무엇을 발명하는가?”</strong> 라는 질문을 던지는 공간입니다.
+      </p>
+<p><br/>이곳은 물건이 아니라 <strong>감정과 욕망, 실패와 위로</strong>를 수집합니다.</p>
+<button class="button">더 살펴보기</button>
+</section>
+</div>
+</section>
+<section class="slide" id="section2">
+<div class="ranking-video-wrapper">
+<video autoplay="" class="ranking-bg-video" loop="" muted="" playsinline="">
+<source src="back2.mp4" type="video/mp4"/>
+</video>
+<div class="ranking-overlay"></div>
+<div class="scroll-area">
+<h2 class="ranking-title top" id="ranking">Ranking. </h2>
+<div class="top2">
+  가장 충동적으로 구매했을 것 같은<br/> 제품에 투표해주세요!<br/><br/>
+  기준은 ‘왜 샀지?’ 싶은 마음이 드는 물건입니다.<br/>
+  당신의 선택을 보여주세요!
+</div>
+<section class="gallery">
+<div class="card"><div class="card-inner"><div class="card-front"><div class="ranking-badge">
+<span class="ranking-number">1위</span>
+</div><img src="sweet.jpg"/></div><div class="card-back"><div class="card-content"><h4>고구마 키링</h4><p>막상 달고다니기엔 크고 이상한...</p><p style="margin-top: 0.5rem; font-weight: bold;">가격: ₩8,900</p></div><button class="vote-button" onclick="voteProduct(1)">투표하기</button><div class="vote-count" id="vote-count-1">투표수: 0</div></div></div></div>
+<div class="card"><div class="card-inner"><div class="card-front"><div class="ranking-badge">
+<span class="ranking-number">2위</span>
+</div><img src="rain.jpg"/></div><div class="card-back"><div class="card-content"><h4>강아지 레인부츠</h4><p>걸으면 벗겨지고 비가 신발 안에 다 들어오는 레인부츠.</p><p style="margin-top: 0.5rem; font-weight: bold;">가격: ₩12,000</p></div><button class="vote-button" onclick="voteProduct(2)">투표하기</button><div class="vote-count" id="vote-count-2">투표수: 0</div></div></div></div>
+<div class="card"><div class="card-inner"><div class="card-front"><div class="ranking-badge">
+<span class="ranking-number">3위</span>
+</div><img src="fork.jpg"/></div><div class="card-back"><div class="card-content"><h4>옥수수 포크</h4><p>옥수수 외엔 포크로 찍을 수 없음.</p><p style="margin-top: 0.5rem; font-weight: bold;">가격: ₩4,500</p></div><button class="vote-button" onclick="voteProduct(3)">투표하기</button><div class="vote-count" id="vote-count-3">투표수: 0</div></div></div></div>
+</section>
+</div>
+<section class="story-list-section">
+<h2>더 많은 사연을 만나보세요!</h2>
+<div class="story-list">
+<ul id="storyContainer"></ul>
+<div class="preview">
+<img class="preview-img" id="imgPreview"/>
+</div>
+</div>
+<div class="pagination" id="pagination"></div>
+</section>
+<script>
+const stories = [
+  { title: "사과 케이스", desc: "닫히지 않아 걸리적거림&nbsp;&nbsp;&nbsp;가격: ₩10,000", img: "apple.jpg" },
+  { title: "맥도날드 에어팟 케이스", desc: "하고다니기 쪽팔림  &nbsp;&nbsp;&nbsp 가격: ₩8,900", img: "mac.jpg" },
+  { title: "징징이 휴지걸이", desc: "쌀 때마다 기분이...&nbsp;&nbsp;&nbsp;가격: ₩9,900", img: "6.jpg" },
+  { title: "과일 손잡이 컵", desc: "손잡이 잡기가 힘듦&nbsp;&nbsp;&nbsp;가격: ₩15,500", img: "cup.jpg" },
+  { title: "수저 거치대", desc: "그냥 안쓰게 됨&nbsp;&nbsp;&nbsp;가격: ₩5,900", img: "5.jpg" },
+  { title: "고양이 화장실 키캡", desc: "귀엽지도 않고..왜 샀지?&nbsp;&nbsp;&nbsp;가격: ₩7,900", img: "puu.jpg" }
+];
+
+const storiesPerPage = 3;
+let currentPage = 1;
+
+function renderStories(page) {
+  const container = document.getElementById("storyContainer");
+  container.innerHTML = "";
+
+  const start = (page - 1) * storiesPerPage;
+  const end = start + storiesPerPage;
+  const visibleStories = stories.slice(start, end);
+
+  visibleStories.forEach(story => {
+    const li = document.createElement("li");
+
+    const title = document.createElement("div");
+    title.className = "story-title";
+    title.textContent = story.title;
+
+    const desc = document.createElement("div");
+    desc.className = "story-desc";
+    desc.innerHTML = story.desc;
+
+    li.appendChild(title);
+    li.appendChild(desc);
+
+    li.onmouseover = () => {
+      const img = document.getElementById("imgPreview");
+      img.src = story.img;
+      img.style.display = "block";
+    };
+    li.onmouseout = () => {
+      document.getElementById("imgPreview").style.display = "none";
+    };
+
+    container.appendChild(li);
+  });
+
+  renderPagination();
+}
+
+function renderPagination() {
+  const totalPages = Math.ceil(stories.length / storiesPerPage);
+  const pagination = document.getElementById("pagination");
+  pagination.innerHTML = "";
+
+  for (let i = 1; i <= totalPages; i++) {
+    const btn = document.createElement("button");
+    btn.textContent = i;
+    if (i === currentPage) btn.classList.add("active");
+    btn.onclick = () => {
+      currentPage = i;
+      renderStories(currentPage);
+    };
+    pagination.appendChild(btn);
+  }
+}
+
+renderStories(currentPage);
+</script>
+</div>
+</section>
+<section class="slide" id="section3">
+<video autoplay="" class="bg-video" loop="" muted="" playsinline="">
+<source src="background.mp4" type="video/mp4"/>
+</video>
+<section class="participate-section">
+<!-- 상단 좌측 제목 -->
+<div class="participate-title-top">Participate.</div>
+<!-- 중앙 오른쪽 텍스트 블록 -->
+<div class="participate-center">
+<h1>Partipate</h1>
+<p class="sub">당신의 충동은, 누군가의 공감이 됩니다.</p>
+<p class="desc">
+<br/>이곳에선 실패도, 낭비도, 헛된 감정도 작은 예술이자 이야기가 됩니다.<br/>
+      웃기고, 엉뚱하고, 조금은 쓸쓸한 당신의 소비를 들려주세요.
+    </p>
+</div>
+<!-- 좌측 하단: 나도 참여하기 -->
+<div class="participate-left-bottom">
+<span>나도 참여하기</span>
+<div class="arrow-button">→</div>
+</div>
+<!-- 우측 하단: 참여하기 버튼 -->
+<div class="participate-right-bottom">
+<button onclick="window.location.href='https://suhyuen-han.github.io/web131/'">참여하기</button>
+</div>
+</section>
+</section>
+</div>
+<script>
+    function scrollToSection(index) {
+      const container = document.getElementById('scrollContainer');
+      const sections = container.querySelectorAll('.slide');
+      if (sections[index]) {
+        sections[index].scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  </script>
+<!-- 우측 하단 원형 이동 버튼 -->
+<div class="next-arrow-button" onclick="scrollNextSection()">→</div>
+<script>
+  function scrollNextSection() {
+    const container = document.getElementById("scrollContainer");
+    const scrollAmount = window.innerWidth;
+    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  }
+</script>
+<script>
+  const voteCounts = [13454, 8897, 5921];
+
+  function voteProduct(index) {
+    voteCounts[index - 1]++;
+    document.getElementById("vote-count-" + index).innerText = "투표수: " + voteCounts[index - 1];
+  }
+
+  window.onload = function() {
+    for (let i = 1; i <= voteCounts.length; i++) {
+      document.getElementById("vote-count-" + i).innerText = "투표수: " + voteCounts[i - 1];
+    }
+  }
+</script>
+</body>
+</html>
